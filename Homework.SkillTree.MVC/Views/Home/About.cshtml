@@ -1,7 +1,30 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "記帳本明細";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+@*需分開寫，不能寫在同一頁，要用哪種方式分開不強求，你可以自行測試選擇適合的方式。
+    必須要有100筆以上的假資料，嚴禁寫死於 HTML 你需要想辦法讓他可以有假資料並且每筆資料至少有兩處以上的不同點。
+    最前方的數字是頁面上的流水號，不能從假資料內讀取，只能寫在HTML頁面上*@
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>類別</th>
+                <th>日期</th>
+                <th>金額</th>
+            </tr>
+            @foreach (var number in Enumerable.Range(1, 110))
+            {
+                <tr>
+                    <td>@number</td>
+                    <td>支出</td>
+                    <td>@DateTime.Now.AddDays(number).ToString("yyyy-MM-dd")</td>
+                    <td>@(300 + number*10)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
