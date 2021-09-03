@@ -11,7 +11,7 @@ namespace Homework.SkillTree.Models
         [Display(Name = "收入")]
         Income
     }
-    public class Categories
+    public class CategoriesViewModel
     {
         [Display(Name ="類別")]
         public CategoryEnum Category { get; set; }
