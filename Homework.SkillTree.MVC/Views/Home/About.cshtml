@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Homework.SkillTree.Models.CategoriesViewModel
+@{
     ViewBag.Title = "記帳本明細";
 }
 <h2>@ViewBag.Title.</h2>
@@ -12,9 +13,9 @@
         <table class="table table-bordered table-hover">
             <tr>
                 <th>#</th>
-                <th>類別</th>
-                <th>日期</th>
-                <th>金額</th>
+                <th>@Html.LabelFor(model => model.Category)</th>
+                <th>@Html.LabelFor(model => model.Date)</th>
+                <th>@Html.LabelFor(model => model.Money)</th>
             </tr>
             @foreach (var number in Enumerable.Range(1, 110))
             {
