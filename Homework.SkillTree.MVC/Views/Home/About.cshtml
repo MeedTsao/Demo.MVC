@@ -1,6 +1,7 @@
-﻿@model Homework.SkillTree.Models.CategoriesViewModel
+﻿@model IEnumerable<Homework.SkillTree.Models.CategoriesViewModel>
 @{
     ViewBag.Title = "記帳本明細";
+    var num = 1;
 }
 <h2>@ViewBag.Title.</h2>
 
@@ -13,18 +14,28 @@
         <table class="table table-bordered table-hover">
             <tr>
                 <th>#</th>
-                <th>@Html.LabelFor(model => model.Category)</th>
-                <th>@Html.LabelFor(model => model.Date)</th>
-                <th>@Html.LabelFor(model => model.Money)</th>
+                <th>@Html.DisplayNameFor(model => model.Category)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+                <th>@Html.DisplayNameFor(model => model.Money)</th>
             </tr>
-            @foreach (var number in Enumerable.Range(1, 110))
+            @foreach (var item in Model)
             {
-                <tr>
-                    <td>@number</td>
-                    <td>支出</td>
-                    <td>@DateTime.Now.AddDays(number).ToString("yyyy-MM-dd")</td>
-                    <td>@(300 + number*10)</td>
-                </tr>
+        <tr>
+            <td>@num</td>
+            @if (item.Category.ToString() == "Expend")
+            {
+                <td style="color:red">支出</td>
+
+            }
+            else
+            {
+                <td style="color:blue">收入</td>
+
+            }
+            <td>@item.Date.ToString("yyyy-MM-dd")</td>
+            <td>@item.Money</td>
+        </tr>
+                num++;
             }
         </table>
     </div>
