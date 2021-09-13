@@ -39,6 +39,12 @@ namespace Homework_SkillTree.Controllers
             return View();
         }
 
+        public ActionResult Create()
+        {
+            CategoriesViewModel model = new CategoriesViewModel();
+            return View(model);
+        }
+
         [HttpPost]
         public ActionResult Index(CategoriesViewModel categories)
         {
@@ -46,7 +52,7 @@ namespace Homework_SkillTree.Controllers
             {
                 _accountBookService.Add(categories);
                 _unitOfWork.Commit();
-                return RedirectToAction("Index");
+                return RedirectToAction("About");
             }
             return View(categories);
         }
