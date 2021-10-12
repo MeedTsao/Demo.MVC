@@ -21,15 +21,14 @@ namespace Homework_SkillTree.Controllers
         }
         public ActionResult Index()
         {
-            CategoriesViewModel model = new CategoriesViewModel();
-            return View(model);
+            return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View(_accountBookService.Lookup());
+            ViewData.Model = _accountBookService.Lookup();
+            return View();
         }
 
         public ActionResult Contact()

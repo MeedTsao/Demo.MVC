@@ -1,0 +1,35 @@
+﻿@model Enum
+
+@if (EnumHelper.IsValidForEnumHelper(ViewData.ModelMetadata))
+{
+    // Display Enum using same names(from [Display] attributes) as in editors
+    string displayName = null;
+    foreach (SelectListItem item in EnumHelper.GetSelectList(ViewData.ModelMetadata, (Enum)Model))
+    {
+        if (item.Selected)
+        {
+            displayName = item.Text ?? item.Value;
+        }
+    }
+
+    // Handle the unexpected case that nothing is selected
+    if (String.IsNullOrEmpty(displayName))
+    {
+        if (Model == null)
+        {
+            displayName = String.Empty;
+        }
+        else
+        {
+            displayName = Model.ToString();
+        }
+    }
+    if (displayName == "支出")
+    {
+        <td style="color:red">支出</td>
+    }
+    else
+    {
+        <td style="color:blue">收入</td>
+    }
+}

@@ -8,14 +8,7 @@ namespace Homework.SkillTree.MVC.Controllers
         public JsonResult CheckDate(DateTime date)
         {
             var result = date.CompareTo(DateTime.Now);
-            if (result > 0)
-            {
-                return Json(false, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
+            return Json(result < 0, JsonRequestBehavior.AllowGet);
         }
     }
 }

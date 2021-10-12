@@ -18,7 +18,7 @@ namespace Homework.SkillTree.Models
         public CategoryEnum Category { get; set; }
         [Required]
         [Display(Name = "金額")]
-        [RegularExpression(@"^[0-9]*[1-9][0-9]*$", ErrorMessage = "金額請輸入正整數")]
+        [Range(1, int.MaxValue, ErrorMessage = "金額請輸入正整數")]
         public int Money { get; set; }
         [Required]
         [Display(Name = "日期")]
